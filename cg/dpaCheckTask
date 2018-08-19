@@ -1,0 +1,67 @@
+package ${table.packageNameBase}.entity;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+import org.hibernate.annotations.GenericGenerator;
+
+/**
+ * The persistent class for the dpa_check_task database table.
+ * 
+ */
+@Entity
+@Table(name = "dpaCheckTask")
+public class Dpa_check_task implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+		@Id
+		@GenericGenerator(name = "system-uuid", strategy = "uuid")
+		@GeneratedValue(generator = "system-uuid")
+		private $(field.javaType) id;
+	
+		@Column(name = "SOURCE")
+    	private $(field.javaType) $(hump(field.fieldName));
+		@Column(name = "SOURCE_ID")
+    	private $(field.javaType) $(hump(field.fieldName));
+		@Column(name = "STATUS")
+    	private $(field.javaType) $(hump(field.fieldName));
+	
+	
+		public void setid(String id){
+			this.id = id;
+		}
+		
+		public String getID(){
+			return this.${field.fieldName};
+		}
+	
+		public void setsource(String source){
+			this.source = source;
+		}
+		
+		public String getSOURCE(){
+			return this.${field.fieldName};
+		}
+	
+		public void setsourceId(String sourceId){
+			this.sourceId = sourceId;
+		}
+		
+		public String getSOURCE_ID(){
+			return this.${field.fieldName};
+		}
+	
+		public void setstatus(String status){
+			this.status = status;
+		}
+		
+		public String getSTATUS(){
+			return this.${field.fieldName};
+		}
+	
+	
+}

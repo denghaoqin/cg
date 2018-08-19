@@ -1,0 +1,218 @@
+package com.dhq.cg.bean;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DataBaseAnalyzer {
+
+	/**
+	 * @return 返回某个数据库下所有的表结构
+	 * @throws Exception 
+	 */
+	public static List<Table> getAllTables(Connection connection ){
+		List<Table> tables = null;
+		if(connection != null){
+			PreparedStatement statement = null;
+			ResultSet connectionRS = null , queryRS = null;
+			tables = new ArrayList<Table>();
+			try {
+				DatabaseMetaData metaData = connection.getMetaData();
+				connectionRS = metaData.getTables(null, null, null, new String[]{"TABLE"});
+				while(connectionRS.next()){
+					String tableName = connectionRS.getString(3);
+					String querySQL = "show full columns from " + tableName;
+					statement = connection.prepareStatement(querySQL);
+					queryRS = statement.executeQuery();
+					
+					Table Table = new Table();
+					List<TableField> keyFields = new ArrayList<TableField>();
+					List<TableField> commonFields = new ArrayList<TableField>();
+					
+					//统计主键和普通字段
+					while(queryRS.next()){
+						String fieldName = queryRS.getString("Field");
+						//注意：得到的Type可能是varchar(n),也可能是datetime
+						String sqlType = queryRS.getString("Type");						
+						String key = queryRS.getString("Key");
+						String comment = queryRS.getString("Comment");
+						String javaType = getJavaTypeFromSQLType(sqlType);
+						
+						//设置字段相关信息
+						TableField field = new TableField();
+						field.setFieldName(fieldName);
+						field.setSqlType(sqlType);
+						field.setJavaType(javaType);
+						field.setFieldComment(comment);						
+						if(key != null && key.equalsIgnoreCase("pri")){
+							field.setPrimary(true);
+							keyFields.add(field);
+						}else{
+							field.setPrimary(false);
+							commonFields.add(field);
+						}
+						try {
+							//是否需要导java.math.BigDecimal包
+							if(javaType.equalsIgnoreCase("bigdecimal"))
+								Table.setMathFlag(true);
+							if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time")||javaType.equalsIgnoreCase("timestamp"))
+								Table.setDateFlag(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+							System.out.println(field);
+						}
+					
+					}
+					
+					//设置表相关的信息
+					Table.setTableName(tableName);
+					Table.setKeyFields(keyFields);
+					Table.setCommonFields(commonFields);
+					
+					tables.add(Table);
+				}
+				return tables;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return tables;
+			} finally{
+				try {
+					if(queryRS != null)
+						queryRS.close();
+					if(connectionRS != null)
+						connectionRS.close();
+					if(statement != null)
+						statement.close();
+					if(connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}else{
+			return tables;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param tableName
+	 * @return 返回表名称为 tableName 的表的结构
+	 * @throws Exception 
+	 */
+	public static Table getTable(String tableName,Connection connection){
+		String sql = "show full columns from " + tableName;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		Table Table = null;
+		if(connection != null){
+			try {
+				preparedStatement = connection.prepareStatement(sql);
+				rs = preparedStatement.executeQuery();
+				
+				Table = new Table();
+				List<TableField> commonFieldList = new ArrayList<TableField>();
+				List<TableField> keyFieldList = new ArrayList<TableField>();
+				
+				//获取表的结构
+				while(rs.next()){
+					String fieldName = rs.getString("Field");
+					//注意：得到的Type可能是varchar(n),也可能是datetime
+					String sqlType = rs.getString("Type");						
+					String key = rs.getString("Key");
+					String commont = rs.getString("Comment");
+					String javaType = getJavaTypeFromSQLType(sqlType);
+					
+					//设置字段相关信息
+					TableField field = new TableField();
+					field.setFieldName(fieldName);
+					field.setSqlType(sqlType);
+					field.setJavaType(javaType);
+					field.setFieldComment(commont);						
+					if(key != null && key.equalsIgnoreCase("pri")){
+						field.setPrimary(true);
+						keyFieldList.add(field);
+					}else{
+						field.setPrimary(false);
+						commonFieldList.add(field);
+					}
+					//是否需要导java.math.BigDecimal包
+					if(javaType.equalsIgnoreCase("bigdecimal"))
+						Table.setMathFlag(true);
+					if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time")||javaType.equalsIgnoreCase("timestamp"))
+						Table.setDateFlag(true);
+				}
+				Table.setTableName(tableName);
+				Table.setCommonFields(commonFieldList);
+				Table.setKeyFields(keyFieldList);
+								
+				return Table;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return Table;
+			} finally{
+				try {
+					if(rs != null)
+						rs.close();
+					if(preparedStatement != null)
+						preparedStatement.close();
+					if(connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}		
+		}else{
+			return Table;
+		}
+		
+	}
+
+	
+	/**
+	 * 
+	 * @param sqlType
+	 * @return SQL类型得到java类型
+	 */
+	private static String getJavaTypeFromSQLType(String sqlType){
+		String javaType = null;
+		int index = sqlType.indexOf("(");
+		if(index != -1)
+			sqlType = sqlType.substring(0, index);
+		
+		if(sqlType.equalsIgnoreCase("VARCHAR")||sqlType.equalsIgnoreCase("CHAR")||sqlType.contains("TEXT"))
+			javaType = "String";
+		else if(sqlType.equalsIgnoreCase("NUMERIC")||sqlType.equalsIgnoreCase("DECIMAL"))
+			javaType = "BigDecimal";
+		else if(sqlType.equalsIgnoreCase("BIT"))
+			javaType = "boolean";
+		else if(sqlType.equalsIgnoreCase("TINYINT"))
+			javaType = "byte";
+		else if(sqlType.equalsIgnoreCase("SAMLLINT"))
+			javaType = "short";
+		else if(sqlType.equalsIgnoreCase("INTEGER")||sqlType.equalsIgnoreCase("int")||sqlType.equalsIgnoreCase("mediumint")||sqlType.equalsIgnoreCase("smallint"))
+			javaType = "int";
+		else if(sqlType.equalsIgnoreCase("BIGINT"))
+			javaType = "long";
+		else if(sqlType.equalsIgnoreCase("REAL"))
+			javaType = "float";
+		else if(sqlType.equalsIgnoreCase("FLOAT")||sqlType.equalsIgnoreCase("double"))
+			javaType = "double";
+		else if(sqlType.equalsIgnoreCase("binary")||sqlType.equalsIgnoreCase("varbinary")||sqlType.equalsIgnoreCase("longvarbinary"))
+			javaType = "byte[]";
+		else if(sqlType.equalsIgnoreCase("date"))
+			javaType = "Date";
+		else if(sqlType.equalsIgnoreCase("time"))
+			javaType = "Time";
+		else if(sqlType.equalsIgnoreCase("datetime")||sqlType.equalsIgnoreCase("timestamp"))
+			javaType = "Timestamp";
+		else if(sqlType.equalsIgnoreCase("longblob"))
+			javaType = "byte[]";
+		return javaType;
+	}
+
+}
