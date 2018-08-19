@@ -59,8 +59,10 @@ public class DataBaseAnalyzer {
 							//是否需要导java.math.BigDecimal包
 							if(javaType.equalsIgnoreCase("bigdecimal"))
 								Table.setMathFlag(true);
-							if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time")||javaType.equalsIgnoreCase("timestamp"))
+							if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time"))
 								Table.setDateFlag(true);
+							if(javaType.equalsIgnoreCase("datetime")||javaType.equalsIgnoreCase("timestamp"))
+								Table.setTimestampFlag(true);
 						} catch (Exception e) {
 							e.printStackTrace();
 							System.out.println(field);
@@ -143,8 +145,10 @@ public class DataBaseAnalyzer {
 					//是否需要导java.math.BigDecimal包
 					if(javaType.equalsIgnoreCase("bigdecimal"))
 						Table.setMathFlag(true);
-					if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time")||javaType.equalsIgnoreCase("timestamp"))
+					if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time"))
 						Table.setDateFlag(true);
+					if(javaType.equalsIgnoreCase("datetime")||javaType.equalsIgnoreCase("timestamp"))
+						Table.setTimestampFlag(true);
 				}
 				Table.setTableName(tableName);
 				Table.setCommonFields(commonFieldList);
@@ -215,4 +219,23 @@ public class DataBaseAnalyzer {
 		return javaType;
 	}
 
+	
+	public static List<Table> getAllTables(Connection connection ,List<String> tables){
+		List<Table> allTables = getAllTables(connection);
+		List<Table> list;
+		if(tables==null||tables.size()==0){
+			list = allTables;
+		}else{
+			list = new ArrayList<Table>();
+			for(String table:tables ){
+				for(Table t:allTables){
+					if(t.getTableName().toLowerCase().equals(table.toLowerCase())){
+						list.add(t);
+						continue;
+					}
+				}
+			}
+		}
+		return list;
+	}
 }

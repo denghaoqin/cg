@@ -17,9 +17,11 @@ public class JDBCUtils {
      *
      * @return
      * @throws SQLException
+     * @throws ClassNotFoundException 
      */
-    public static Connection getConnection() throws SQLException {
-        return   getDataSource().getConnection();
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+    	
+    	return   getDataSource().getConnection();
     }
 
     /**

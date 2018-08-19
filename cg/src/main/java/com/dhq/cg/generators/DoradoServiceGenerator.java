@@ -1,11 +1,31 @@
 package com.dhq.cg.generators;
 
-import com.dhq.cg.AbstractGeneratorAdapter;
+import java.io.File;
 
-public class DoradoServiceGenerator extends AbstractGeneratorAdapter{
+import com.dhq.cg.utils.StringUtils;
 
-	public void start() {
-		// TODO Auto-generated method stub
-		
+public class DoradoServiceGenerator extends SimpleDatabaseGenerator{
+
+	public DoradoServiceGenerator(String templateFileName,
+			String outPutFileBaseDir, String packageNameBase) {
+		super(templateFileName, outPutFileBaseDir, packageNameBase);
+		// TODO Auto-generated constructor stub
 	}
+
+	public String getOutPutFilePath(String packageNameBase,String tableName){
+		/*StringBuffer filePath = new StringBuffer(this.getClass().getResource("/").getPath())
+		.append(File.separator)*/
+		StringBuffer filePath = new StringBuffer()
+		.append(System.getProperty("user.dir"))
+		.append(File.separator)
+		.append(this.getOutPutFileBaseDir())
+		.append(File.separator)
+		.append(packageNameBase.replaceAll("\\.", "/"))
+		.append(File.separator)
+		.append(StringUtils.capitalFirstChar(StringUtils.hump(tableName)))
+		.append("Service.java")
+		;
+		return filePath.toString();
+	}
+	
 }

@@ -13,6 +13,8 @@ public class Table {
 	private boolean dateFlag = false;
 	//字段中是否有numeric和decimal类型的，如果有，那么，在生成实体类时就需要导java.math.BigDecimal包了
 	private boolean mathFlag = false;
+	//字段中是否有Timestamp型的，如果有，那么在生成实体类时，就需要导java.sql.Timestamp包了
+	private boolean timestampFlag = false;
 	//生成实体类，mapper接口等等时的基名
 	private String packageNameBase;
 	public String getTableName() {
@@ -51,4 +53,11 @@ public class Table {
 	public void setPackageNameBase(String packageNameBase) {
 		this.packageNameBase = packageNameBase;
 	}
+	public boolean getTimestampFlag() {
+		return timestampFlag;
+	}
+	public void setTimestampFlag(boolean timestampFlag) {
+		this.timestampFlag = timestampFlag;
+	}
+	
 }
