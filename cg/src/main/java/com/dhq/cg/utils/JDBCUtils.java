@@ -9,11 +9,11 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class JDBCUtils {
 
-    // »ñµÃc3p0Á¬½Ó³Ø¶ÔÏó
+    // æ•°æ®æº
     private static ComboPooledDataSource ds;
 
     /**
-     * »ñµÃÊı¾İ¿âÁ¬½Ó¶ÔÏó
+     * è·å–æ•°æ®åº“è¿æ¥
      *
      * @return
      * @throws SQLException
@@ -21,11 +21,11 @@ public class JDBCUtils {
      */
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
     	
-    	return   getDataSource().getConnection();
+    	return getDataSource().getConnection();
     }
 
     /**
-     * »ñµÃc3p0Á¬½Ó³Ø¶ÔÏó
+     * è·å–æ•°æ®æº
      * @return
      */
     public static DataSource getDataSource() {

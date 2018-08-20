@@ -1,4 +1,4 @@
-package com.dhq.cg.generators.hibernate;
+package com.dhq.cg.generators.dorado;
 
 import java.io.File;
 
