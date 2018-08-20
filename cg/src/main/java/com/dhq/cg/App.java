@@ -1,6 +1,5 @@
 package com.dhq.cg;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.dhq.cg.bean.DataBaseAnalyzer;
@@ -25,9 +24,9 @@ public class App
     	DoradoUIGenerator dug = new DoradoUIGenerator("doradoUI.tpl","output", "com.hiav.zgtj.smis.dpa.ui");
     	DoradoViewGenerator dvg = new DoradoViewGenerator("doradoView.tpl","output", "com.hiav.zgtj.smis.dpa.view");
     	DoradoViewJsGenerator dvjg = new DoradoViewJsGenerator("doradoViewJs.tpl","output", "com.hiav.zgtj.smis.dpa.view");
-    	List<String> tables = new ArrayList<String>();
-    	tables.add("dpa_daily_plan");
-    	List<Table> allTables = DataBaseAnalyzer.getAllTables(JDBCUtils.getConnection() ,tables);
+    	//List<String> tables = new ArrayList<String>();
+    	//tables.add("dpa_daily_plan");
+    	List<Table> allTables = DataBaseAnalyzer.getAllTables(JDBCUtils.getConnection(),"^dpa.*$");
 		hg.setTables(allTables);
 		dsg.setTables(allTables);
 		dug.setTables(allTables);

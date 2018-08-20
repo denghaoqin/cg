@@ -5,7 +5,7 @@ public class StringUtils {
 	/**
 	 * 
 	 * @param str
-	 * @return °ÑÒ»¸ö×Ö·û´®Ê××ÖÄ¸´óĞ´
+	 * @return æŠŠä¸€ä¸ªå­—ç¬¦ä¸²é¦–å­—æ¯å¤§å†™
 	 */
 	public static String capitalFirstChar(String str){
 		if(str == null || str.trim().equals(""))
@@ -24,7 +24,7 @@ public class StringUtils {
 	/**
 	 * 
 	 * @param str
-	 * @return È¥µô×Ö·û´®ÖĞµÄÏÂ»®Ïß£¬²¢°ÑÏÂ»®ÏßºóÃæµÄµÚÒ»¸ö×Ö·û¸ÄÎª´óĞ´
+	 * @return æŠŠå¸¦ä¸‹åˆ’çº¿çš„å­—ç¬¦ä¸²è½¬æ¢æˆé©¼å³°æ ‡è¯†
 	 */
 	public static String hump(String str){
 		if(str == null || str.trim().equals(""))

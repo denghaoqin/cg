@@ -172,4 +172,23 @@ public class DataBaseAnalyzer {
 		}
 		return list;
 	}
+	
+	
+	public static List<Table> getAllTables(Connection connection ,String regex){
+		List<Table> allTables = getAllTables(connection);
+		List<Table> list;
+		if(regex==null||regex.isEmpty()){
+			list = allTables;
+		}else{
+			list = new ArrayList<Table>();
+			for(Table t:allTables){
+				if(t.getTableName().matches(regex)){
+					list.add(t);
+					continue;
+				}
+			}
+		}
+		return list;
+	}
+	
 }

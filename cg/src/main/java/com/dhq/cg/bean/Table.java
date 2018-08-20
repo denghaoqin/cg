@@ -59,5 +59,12 @@ public class Table {
 	public void setTimestampFlag(boolean timestampFlag) {
 		this.timestampFlag = timestampFlag;
 	}
+	@Override
+	public String toString() {
+		return "Table [tableName=" + tableName + ", commonFields="
+				+ commonFields + ", keyFields=" + keyFields + ", dateFlag="
+				+ dateFlag + ", mathFlag=" + mathFlag + ", timestampFlag="
+				+ timestampFlag + ", packageNameBase=" + packageNameBase + "]";
+	}
 	
 }
