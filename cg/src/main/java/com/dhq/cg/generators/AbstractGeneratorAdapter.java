@@ -1,6 +1,5 @@
-package com.dhq.cg;
+package com.dhq.cg.generators;
 
-import com.dhq.cg.generators.CodeGenerator;
 
 public abstract class AbstractGeneratorAdapter implements CodeGenerator{
 

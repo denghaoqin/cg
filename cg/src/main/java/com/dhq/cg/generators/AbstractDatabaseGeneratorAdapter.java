@@ -1,4 +1,4 @@
-package com.dhq.cg;
+package com.dhq.cg.generators;
 
 import java.util.List;
 

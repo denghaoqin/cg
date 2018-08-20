@@ -1,12 +1,13 @@
-package com.dhq.cg.generators;
+package com.dhq.cg.generators.hibernate;
 
 import java.io.File;
 
+import com.dhq.cg.generators.SimpleDatabaseGenerator;
 import com.dhq.cg.utils.StringUtils;
 
-public class DoradoViewJsGenerator extends SimpleDatabaseGenerator{
+public class HibernateEntityGenerator extends SimpleDatabaseGenerator{
 
-	public DoradoViewJsGenerator(String templateFileName,
+	public HibernateEntityGenerator(String templateFileName,
 			String outPutFileBaseDir, String packageNameBase) {
 		super(templateFileName, outPutFileBaseDir, packageNameBase);
 		// TODO Auto-generated constructor stub
@@ -23,7 +24,7 @@ public class DoradoViewJsGenerator extends SimpleDatabaseGenerator{
 		.append(packageNameBase.replaceAll("\\.", "/"))
 		.append(File.separator)
 		.append(StringUtils.capitalFirstChar(StringUtils.hump(tableName)))
-		.append(".js")
+		.append(".java")
 		;
 		return filePath.toString();
 	}

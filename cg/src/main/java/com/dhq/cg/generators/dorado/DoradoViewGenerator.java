@@ -1,12 +1,13 @@
-package com.dhq.cg.generators;
+package com.dhq.cg.generators.dorado;
 
 import java.io.File;
 
+import com.dhq.cg.generators.SimpleDatabaseGenerator;
 import com.dhq.cg.utils.StringUtils;
 
-public class DoradoServiceGenerator extends SimpleDatabaseGenerator{
+public class DoradoViewGenerator extends SimpleDatabaseGenerator{
 
-	public DoradoServiceGenerator(String templateFileName,
+	public DoradoViewGenerator(String templateFileName,
 			String outPutFileBaseDir, String packageNameBase) {
 		super(templateFileName, outPutFileBaseDir, packageNameBase);
 		// TODO Auto-generated constructor stub
@@ -23,7 +24,7 @@ public class DoradoServiceGenerator extends SimpleDatabaseGenerator{
 		.append(packageNameBase.replaceAll("\\.", "/"))
 		.append(File.separator)
 		.append(StringUtils.capitalFirstChar(StringUtils.hump(tableName)))
-		.append("Service.java")
+		.append(".view")
 		;
 		return filePath.toString();
 	}

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.dhq.cg.AbstractDatabaseGeneratorAdapter;
 import com.dhq.cg.bean.Table;
 import com.dhq.cg.utils.StringUtils;
 import com.dhq.cg.utils.TemplateUtils;

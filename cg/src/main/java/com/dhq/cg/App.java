@@ -5,11 +5,11 @@ import java.util.List;
 
 import com.dhq.cg.bean.DataBaseAnalyzer;
 import com.dhq.cg.bean.Table;
-import com.dhq.cg.generators.DoradoServiceGenerator;
-import com.dhq.cg.generators.DoradoUIGenerator;
-import com.dhq.cg.generators.DoradoViewGenerator;
-import com.dhq.cg.generators.DoradoViewJsGenerator;
-import com.dhq.cg.generators.HibernateEntityGenerator;
+import com.dhq.cg.generators.dorado.DoradoServiceGenerator;
+import com.dhq.cg.generators.dorado.DoradoUIGenerator;
+import com.dhq.cg.generators.dorado.DoradoViewGenerator;
+import com.dhq.cg.generators.dorado.DoradoViewJsGenerator;
+import com.dhq.cg.generators.hibernate.HibernateEntityGenerator;
 import com.dhq.cg.utils.JDBCUtils;
 
 /**
