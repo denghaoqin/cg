@@ -5,12 +5,12 @@
   <Model/>
   <View>
     <DataSet id="dsMain">
-      <Property name="dataProvider">#(uiName)#find</Property>
-      <Property name="dataType">[#(entityName)]</Property>
+      <Property name="dataProvider">#(hump(table.tableName))UI#find</Property>
+      <Property name="dataType">[#(capitalFirstChar(hump(table.tableName)))]</Property>
       <Property name="pageSize">10</Property>
     </DataSet>
     <UpdateAction id="actSaveMain">
-      <Property name="dataResolver">#(uiName)#saveMain</Property>
+      <Property name="dataResolver">#(hump(table.tableName))UI#saveMain</Property>
       <UpdateItem>
         <Property name="dataSet">dsMain</Property>
         <Property name="dataPath">!DIRTY_TREE</Property>
@@ -23,19 +23,19 @@
           <Property name="itemCodes">pages</Property>
         </DataPilot>
         <ToolBarButton id="btnAddMain">
-          <Property name="caption">ÃÌº”</Property>
+          <Property name="caption">Ê∑ªÂä†</Property>
           <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
           <Property name="hideMode">display</Property>
           <Property name="tags">z</Property>
         </ToolBarButton>
         <ToolBarButton id="btnDeleteMain">
-          <Property name="caption">…æ≥˝</Property>
+          <Property name="caption">Âà†Èô§</Property>
           <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
           <Property name="hideMode">display</Property>
           <Property name="tags">z</Property>
         </ToolBarButton>
         <ToolBarButton id="btnEditMain">
-          <Property name="caption">–ﬁ∏ƒ</Property>
+          <Property name="caption">‰øÆÊîπ</Property>
           <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
         </ToolBarButton>
       </ToolBar>
@@ -53,14 +53,14 @@
       <Property name="width">500</Property>
       <Property name="height">280</Property>
       <Property name="modal">true</Property>
-      <Property name="caption">#(dlgMainName)</Property>
+      <Property name="caption">ËØ¶ÁªÜ‰ø°ÊÅØ</Property>
       <Buttons>
         <Button id="btnSaveMain">
-          <Property name="caption">±£¥Ê</Property>
+          <Property name="caption">‰øùÂ≠ò</Property>
           <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
         </Button>
         <Button id="btnCancelMain">
-          <Property name="caption">»°œ˚</Property>
+          <Property name="caption">ÂèñÊ∂à</Property>
           <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
         </Button>
       </Buttons>
@@ -69,7 +69,7 @@
           <Property name="dataSet">dsMain</Property>
           <Property name="cols">*</Property>
           <Property name="labelWidth">80</Property>
-          <Property name="labelSeparator">£∫</Property>
+          <Property name="labelSeparator">Ôºö</Property>
           <Property name="labelAlign">right</Property>
         </AutoForm>
       </Children>

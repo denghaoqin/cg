@@ -14,6 +14,7 @@ public class TemplateUtils {
 	public static void renderToFile(String templateFileName,Map<?, ?> data,String outFileName) throws IOException{
 		
 		Engine engine = EngineUtils.getEngine();
+		engine.setEncoding("utf-8");
 		Template template = engine.getTemplate(getTemplateFilePath(templateFileName));
 		File file = new File(outFileName);
 	    if(!file.getParentFile().exists()) {

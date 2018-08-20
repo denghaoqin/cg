@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -55,10 +55,10 @@ public class DpaDailyPlan implements Serializable {
     	private String constructionItem;
     	
 		@Column(name = "CONSTRUCTION_START_TIME")
-    	private Timestamp constructionStartTime;
+    	private Date constructionStartTime;
     	
 		@Column(name = "CONSTRUCTION_END_TIME")
-    	private Timestamp constructionEndTime;
+    	private Date constructionEndTime;
     	
 		@Column(name = "WORKING_CONTENTS")
     	private String workingContents;
@@ -88,19 +88,19 @@ public class DpaDailyPlan implements Serializable {
     	private String remark;
     	
 		@Column(name = "DELETED")
-    	private byte deleted;
+    	private Boolean deleted;
     	
 		@Column(name = "CREATED_BY")
     	private String createdBy;
     	
 		@Column(name = "CREATION_DATE")
-    	private Timestamp creationDate;
+    	private Date creationDate;
     	
 		@Column(name = "LAST_UPDATE_BY")
     	private String lastUpdateBy;
     	
 		@Column(name = "LAST_UPDATE_DATE")
-    	private Timestamp lastUpdateDate;
+    	private Date lastUpdateDate;
     	
 	
 	
@@ -192,19 +192,19 @@ public class DpaDailyPlan implements Serializable {
 			return this.constructionItem;
 		}
 	
-		public void setConstructionStartTime(Timestamp constructionStartTime){
+		public void setConstructionStartTime(Date constructionStartTime){
 			this.constructionStartTime = constructionStartTime;
 		}
 		
-		public Timestamp getConstructionStartTime(){
+		public Date getConstructionStartTime(){
 			return this.constructionStartTime;
 		}
 	
-		public void setConstructionEndTime(Timestamp constructionEndTime){
+		public void setConstructionEndTime(Date constructionEndTime){
 			this.constructionEndTime = constructionEndTime;
 		}
 		
-		public Timestamp getConstructionEndTime(){
+		public Date getConstructionEndTime(){
 			return this.constructionEndTime;
 		}
 	
@@ -280,11 +280,11 @@ public class DpaDailyPlan implements Serializable {
 			return this.remark;
 		}
 	
-		public void setDeleted(byte deleted){
+		public void setDeleted(Boolean deleted){
 			this.deleted = deleted;
 		}
 		
-		public byte getDeleted(){
+		public Boolean getDeleted(){
 			return this.deleted;
 		}
 	
@@ -296,11 +296,11 @@ public class DpaDailyPlan implements Serializable {
 			return this.createdBy;
 		}
 	
-		public void setCreationDate(Timestamp creationDate){
+		public void setCreationDate(Date creationDate){
 			this.creationDate = creationDate;
 		}
 		
-		public Timestamp getCreationDate(){
+		public Date getCreationDate(){
 			return this.creationDate;
 		}
 	
@@ -312,11 +312,11 @@ public class DpaDailyPlan implements Serializable {
 			return this.lastUpdateBy;
 		}
 	
-		public void setLastUpdateDate(Timestamp lastUpdateDate){
+		public void setLastUpdateDate(Date lastUpdateDate){
 			this.lastUpdateDate = lastUpdateDate;
 		}
 		
-		public Timestamp getLastUpdateDate(){
+		public Date getLastUpdateDate(){
 			return this.lastUpdateDate;
 		}
 	

@@ -1,4 +1,4 @@
-package #(package);
+package #(table.packageNameBase);
 
 import java.util.Collection;
 import java.util.Date;
@@ -22,21 +22,21 @@ import com.bstek.uflo.client.service.ProcessClient;
 import com.bstek.uflo.service.StartProcessInfo;
 
 @Service
-public class #(serviceName) extends BaseService<#(entityName)> {
+public class #(capitalFirstChar(hump(table.tableName)))Service extends BaseService<#(capitalFirstChar(hump(table.tableName)))> {
     
 	@Autowired
 	private UserHelperService userHelperService;
 	
 	@SuppressWarnings("rawtypes")
 	@Override
-	public void find(Page<#(entityName)> page, Map<String, Object> params,
+	public void find(Page<#(capitalFirstChar(hump(table.tableName)))> page, Map<String, Object> params,
 			Criteria filterCriteria) {
 
-		StringBuilder sql = new StringBuilder(" select e.* FROM #(tableName) e ")
-			.append(" left join pm_project p on e.project_id = p.id ")
+		StringBuilder sql = new StringBuilder(" select e.* FROM #(table.tableName) e ")
+			//.append(" left join pm_project p on e.project_id = p.id ")
 			.append(" where e.deleted=0 ");
 		Map<String, Class> e = new HashMap<String, Class>();
-		e.put("e", #(entityName).class);
+		e.put("e", #(capitalFirstChar(hump(table.tableName))).class);
 		
 		Map<String, Object> p = new HashMap<String, Object>();
 		if (params != null) {
@@ -72,14 +72,14 @@ public class #(serviceName) extends BaseService<#(entityName)> {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Collection<#(entityName)> find(Map<String, Object> parameter) {
+	public Collection<#(capitalFirstChar(hump(table.tableName)))> find(Map<String, Object> params) {
 
 
-		StringBuilder sql = new StringBuilder(" select e.* FROM #(tableName) e ")
-			.append(" left join pm_project p on e.project_id = p.id ")
+		StringBuilder sql = new StringBuilder(" select e.* FROM #(table.tableName) e ")
+			//.append(" left join pm_project p on e.project_id = p.id ")
 			.append(" where e.deleted=0 ");
 		Map<String, Class> e = new HashMap<String, Class>();
-		e.put("e", #(entityName).class);
+		e.put("e", #(capitalFirstChar(hump(table.tableName))).class);
 		
 		Map<String, Object> p = new HashMap<String, Object>();
 		if (params != null) {
@@ -110,27 +110,25 @@ public class #(serviceName) extends BaseService<#(entityName)> {
 		*/
 		sql.append(" ORDER BY e.creation_date desc ");
 
-		Map<String, Class> e = new HashMap<String, Class>();
-		e.put("e", #(entityName).class);
 		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(null)
 				.findAll();
 	}
 	
 	// 逻辑删除
 	public void delete(String id) {
-		#(entityName) pt = (#(entityName)) this.getCurrentSession().get(
-				#(entityName).class, id);
+		#(capitalFirstChar(hump(table.tableName))) x = (#(capitalFirstChar(hump(table.tableName)))) this.getCurrentSession().get(
+				#(capitalFirstChar(hump(table.tableName))).class, id);
 		x.setDeleted(true);
 				this.update(x);
 	}
 
 	@Override
-	public void save(Collection<#(entityName)> datas) {
+	public void save(Collection<#(capitalFirstChar(hump(table.tableName)))> datas) {
 		IUser marker = ContextHolder.getLoginUser();
 		Date markTime = new Date();
 		Session session = this.getCurrentSession();
 		
-		for (#(entityName) x : datas) {
+		for (#(capitalFirstChar(hump(table.tableName))) x : datas) {
 			
 			EntityState state = EntityUtils.getState(x);
 			

@@ -5,12 +5,12 @@
   <Model/>
   <View>
     <DataSet id="dsMain">
-      <Property name="dataProvider">#find</Property>
-      <Property name="dataType">[]</Property>
+      <Property name="dataProvider">dpaDailyPlanUI#find</Property>
+      <Property name="dataType">[DpaDailyPlan]</Property>
       <Property name="pageSize">10</Property>
     </DataSet>
     <UpdateAction id="actSaveMain">
-      <Property name="dataResolver">#saveMain</Property>
+      <Property name="dataResolver">dpaDailyPlanUI#saveMain</Property>
       <UpdateItem>
         <Property name="dataSet">dsMain</Property>
         <Property name="dataPath">!DIRTY_TREE</Property>
@@ -23,19 +23,19 @@
           <Property name="itemCodes">pages</Property>
         </DataPilot>
         <ToolBarButton id="btnAddMain">
-          <Property name="caption">���</Property>
+          <Property name="caption">添加</Property>
           <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
           <Property name="hideMode">display</Property>
           <Property name="tags">z</Property>
         </ToolBarButton>
         <ToolBarButton id="btnDeleteMain">
-          <Property name="caption">ɾ��</Property>
+          <Property name="caption">删除</Property>
           <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
           <Property name="hideMode">display</Property>
           <Property name="tags">z</Property>
         </ToolBarButton>
         <ToolBarButton id="btnEditMain">
-          <Property name="caption">�޸�</Property>
+          <Property name="caption">修改</Property>
           <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
         </ToolBarButton>
       </ToolBar>
@@ -53,14 +53,14 @@
       <Property name="width">500</Property>
       <Property name="height">280</Property>
       <Property name="modal">true</Property>
-      <Property name="caption"></Property>
+      <Property name="caption">详细信息</Property>
       <Buttons>
         <Button id="btnSaveMain">
-          <Property name="caption">����</Property>
+          <Property name="caption">保存</Property>
           <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
         </Button>
         <Button id="btnCancelMain">
-          <Property name="caption">ȡ��</Property>
+          <Property name="caption">取消</Property>
           <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
         </Button>
       </Buttons>
@@ -69,7 +69,7 @@
           <Property name="dataSet">dsMain</Property>
           <Property name="cols">*</Property>
           <Property name="labelWidth">80</Property>
-          <Property name="labelSeparator">��</Property>
+          <Property name="labelSeparator">：</Property>
           <Property name="labelAlign">right</Property>
         </AutoForm>
       </Children>

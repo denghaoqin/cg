@@ -22,7 +22,7 @@ var dsMain = view.get("#dsMain");
 !function(self, arg) {
 	var e = dsMain.getData("#");
 	if (e) {
-		dorado.MessageBox.confirm("ÄúÕæµÄÏëÉ¾³ıµ±Ç°Êı¾İÂğ?", function() {
+		dorado.MessageBox.confirm("æ‚¨çœŸçš„æƒ³åˆ é™¤å½“å‰æ•°æ®å—?", function() {
 			e.set("deleted", 1);
 			view.get("#actSaveMain").execute(function(msg) {
 				if(msg) {
@@ -31,7 +31,7 @@ var dsMain = view.get("#dsMain");
 					dorado.MessageBox.alert(msg);
 				} else {
 					dsMain.flushAsync();
-					dorado.widget.NotifyTipManager.notify("É¾³ı³É¹¦£¡");
+					dorado.widget.NotifyTipManager.notify("åˆ é™¤æˆåŠŸï¼");
 				}
 			});
 		});
@@ -48,11 +48,11 @@ var dsMain = view.get("#dsMain");
 					dorado.MessageBox.alert(msg);
 				} else {
 					view.id("dlgMain").hide();
-					dorado.widget.NotifyTipManager.notify("±£´æ³É¹¦£¡");
+					dorado.widget.NotifyTipManager.notify("ä¿å­˜æˆåŠŸï¼");
 				}
 			});
 	} else {
-		dorado.MessageBox.alert("Ã»ÓĞĞèÒª±£´æµÄÊı¾İ");
+		dorado.MessageBox.alert("æ²¡æœ‰éœ€è¦ä¿å­˜çš„æ•°æ®");
 		view.id("dlgMain").hide();
 	}
 };
@@ -60,7 +60,7 @@ var dsMain = view.get("#dsMain");
 // @Bind #btnCancelMain.onClick
 !function(self, arg) {
 	if (view.get("#actSaveMain").get("hasUpdateData")) {
-		dorado.MessageBox.confirm("ÄúÕæµÄÒªÈ¡Ïûµ±Ç°²Ù×÷Âğ£¿", function() {
+		dorado.MessageBox.confirm("æ‚¨çœŸçš„è¦å–æ¶ˆå½“å‰æ“ä½œå—ï¼Ÿ", function() {
 			view.id("dlgMain").hide();
 			dsMain.getData("#").cancel();
 		});

@@ -3,19 +3,19 @@ package com.dhq.cg.bean;
 import java.util.List;
 
 public class Table {
-	//����
+	 //表名
 	private String tableName;
-	//��ͨ�ֶμ��ϣ�һ���ֶΰ����ˣ��ֶ�����SQL���ͣ�Java���ͣ�ע�ͣ��Ƿ�������־
+    //普通字段集合，一个字段包括了：字段名，SQL类型，Java类型，注释，是否主键标志
 	private List<TableField> commonFields;
-	//�����ֶμ���
+    //主键字段集合
 	private List<TableField> keyFields;
-	//�ֶ����Ƿ��������͵ģ�����У���ô������ʵ����ʱ������Ҫ��java.util.Date����
+    //字段中是否有日期型的，如果有，那么在生成实体类时，就需要导java.util.Date包了
 	private boolean dateFlag = false;
-	//�ֶ����Ƿ���numeric��decimal���͵ģ�����У���ô��������ʵ����ʱ����Ҫ��java.math.BigDecimal����
+    //字段中是否有numeric和decimal类型的，如果有，那么，在生成实体类时就需要导java.math.BigDecimal包了
 	private boolean mathFlag = false;
-	//�ֶ����Ƿ���Timestamp�͵ģ�����У���ô������ʵ����ʱ������Ҫ��java.sql.Timestamp����
+    //字段中是否有timestamp类型的，如果有，那么，在生成实体类时就需要导Timestamp包了
 	private boolean timestampFlag = false;
-	//����ʵ���࣬mapper�ӿڵȵ�ʱ�Ļ���
+    //生成实体类，mapper接口等等时的基名
 	private String packageNameBase;
 	public String getTableName() {
 		return tableName;

@@ -10,10 +10,10 @@ import java.util.List;
 
 public class DataBaseAnalyzer {
 
-	/**
-	 * @return ·µ»ØÄ³¸öÊı¾İ¿âÏÂËùÓĞµÄ±í½á¹¹
-	 * @throws Exception 
-	 */
+	 /**
+     * @return è¿”å›æŸä¸ªæ•°æ®åº“ä¸‹æ‰€æœ‰çš„è¡¨ç»“æ„
+     * @throws Exception
+     */
 	public static List<Table> getAllTables(Connection connection ){
 		List<Table> tables = null;
 		if(connection != null){
@@ -33,16 +33,16 @@ public class DataBaseAnalyzer {
 					List<TableField> keyFields = new ArrayList<TableField>();
 					List<TableField> commonFields = new ArrayList<TableField>();
 					
-					//Í³¼ÆÖ÷¼üºÍÆÕÍ¨×Ö¶Î
+					 //ç»Ÿè®¡ä¸»é”®å’Œæ™®é€šå­—æ®µ
 					while(queryRS.next()){
 						String fieldName = queryRS.getString("Field");
-						//×¢Òâ£ºµÃµ½µÄType¿ÉÄÜÊÇvarchar(n),Ò²¿ÉÄÜÊÇdatetime
+						 //æ³¨æ„ï¼šå¾—åˆ°çš„Typeå¯èƒ½æ˜¯varchar(n),ä¹Ÿå¯èƒ½æ˜¯datetime
 						String sqlType = queryRS.getString("Type");						
 						String key = queryRS.getString("Key");
 						String comment = queryRS.getString("Comment");
 						String javaType = getJavaTypeFromSQLType(sqlType);
 						
-						//ÉèÖÃ×Ö¶ÎÏà¹ØĞÅÏ¢
+						//è®¾ç½®å­—æ®µç›¸å…³ä¿¡æ¯
 						TableField field = new TableField();
 						field.setFieldName(fieldName);
 						field.setSqlType(sqlType);
@@ -56,7 +56,7 @@ public class DataBaseAnalyzer {
 							commonFields.add(field);
 						}
 						try {
-							//ÊÇ·ñĞèÒªµ¼java.math.BigDecimal°ü
+							 //æ˜¯å¦éœ€è¦å¯¼java.math.BigDecimalåŒ…
 							if(javaType.equalsIgnoreCase("bigdecimal"))
 								Table.setMathFlag(true);
 							if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time"))
@@ -70,7 +70,7 @@ public class DataBaseAnalyzer {
 					
 					}
 					
-					//ÉèÖÃ±íÏà¹ØµÄĞÅÏ¢
+				    //è®¾ç½®è¡¨ç›¸å…³çš„ä¿¡æ¯
 					Table.setTableName(tableName);
 					Table.setKeyFields(keyFields);
 					Table.setCommonFields(commonFields);
@@ -100,119 +100,53 @@ public class DataBaseAnalyzer {
 		}
 	}
 	
-	/**
-	 * 
-	 * @param tableName
-	 * @return ·µ»Ø±íÃû³ÆÎª tableName µÄ±íµÄ½á¹¹
-	 * @throws Exception 
-	 */
-	public static Table getTable(String tableName,Connection connection){
-		String sql = "show full columns from " + tableName;
-		PreparedStatement preparedStatement = null;
-		ResultSet rs = null;
-		Table Table = null;
-		if(connection != null){
-			try {
-				preparedStatement = connection.prepareStatement(sql);
-				rs = preparedStatement.executeQuery();
-				
-				Table = new Table();
-				List<TableField> commonFieldList = new ArrayList<TableField>();
-				List<TableField> keyFieldList = new ArrayList<TableField>();
-				
-				//»ñÈ¡±íµÄ½á¹¹
-				while(rs.next()){
-					String fieldName = rs.getString("Field");
-					//×¢Òâ£ºµÃµ½µÄType¿ÉÄÜÊÇvarchar(n),Ò²¿ÉÄÜÊÇdatetime
-					String sqlType = rs.getString("Type");						
-					String key = rs.getString("Key");
-					String commont = rs.getString("Comment");
-					String javaType = getJavaTypeFromSQLType(sqlType);
-					
-					//ÉèÖÃ×Ö¶ÎÏà¹ØĞÅÏ¢
-					TableField field = new TableField();
-					field.setFieldName(fieldName);
-					field.setSqlType(sqlType);
-					field.setJavaType(javaType);
-					field.setFieldComment(commont);						
-					if(key != null && key.equalsIgnoreCase("pri")){
-						field.setPrimary(true);
-						keyFieldList.add(field);
-					}else{
-						field.setPrimary(false);
-						commonFieldList.add(field);
-					}
-					//ÊÇ·ñĞèÒªµ¼java.math.BigDecimal°ü
-					if(javaType.equalsIgnoreCase("bigdecimal"))
-						Table.setMathFlag(true);
-					if(javaType.equalsIgnoreCase("date")||javaType.equalsIgnoreCase("time"))
-						Table.setDateFlag(true);
-					if(javaType.equalsIgnoreCase("datetime")||javaType.equalsIgnoreCase("timestamp"))
-						Table.setTimestampFlag(true);
-				}
-				Table.setTableName(tableName);
-				Table.setCommonFields(commonFieldList);
-				Table.setKeyFields(keyFieldList);
-								
-				return Table;
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return Table;
-			} finally{
-				try {
-					if(rs != null)
-						rs.close();
-					if(preparedStatement != null)
-						preparedStatement.close();
-					if(connection != null)
-						connection.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}		
-		}else{
-			return Table;
-		}
-		
-	}
-
-	
-	/**
-	 * 
-	 * @param sqlType
-	 * @return SQLÀàĞÍµÃµ½javaÀàĞÍ
-	 */
+	 /**
+    *
+    * @param sqlType
+    * @return SQLç±»å‹å¾—åˆ°javaç±»å‹
+    */
 	private static String getJavaTypeFromSQLType(String sqlType){
 		String javaType = null;
+		String precision = null;
 		int index = sqlType.indexOf("(");
-		if(index != -1)
+		if(index != -1){
+			int indexL = sqlType.indexOf(")");
+			if(indexL!=-1){
+				precision = sqlType.substring(index+1, indexL);
+			}
 			sqlType = sqlType.substring(0, index);
+		}
 		
 		if(sqlType.equalsIgnoreCase("VARCHAR")||sqlType.equalsIgnoreCase("CHAR")||sqlType.contains("TEXT"))
 			javaType = "String";
 		else if(sqlType.equalsIgnoreCase("NUMERIC")||sqlType.equalsIgnoreCase("DECIMAL"))
 			javaType = "BigDecimal";
 		else if(sqlType.equalsIgnoreCase("BIT"))
-			javaType = "boolean";
-		else if(sqlType.equalsIgnoreCase("TINYINT"))
-			javaType = "byte";
+			javaType = "Boolean";
+		else if(sqlType.equalsIgnoreCase("TINYINT")){
+			if(Integer.parseInt(precision)==1){
+				javaType = "Boolean";
+			}else{
+				javaType = "Byte";
+			}
+		}
 		else if(sqlType.equalsIgnoreCase("SAMLLINT"))
-			javaType = "short";
+			javaType = "Integer";
 		else if(sqlType.equalsIgnoreCase("INTEGER")||sqlType.equalsIgnoreCase("int")||sqlType.equalsIgnoreCase("mediumint")||sqlType.equalsIgnoreCase("smallint"))
-			javaType = "int";
+			javaType = "Integer";
 		else if(sqlType.equalsIgnoreCase("BIGINT"))
-			javaType = "long";
+			javaType = "Long";
 		else if(sqlType.equalsIgnoreCase("REAL"))
-			javaType = "float";
+			javaType = "Float";
 		else if(sqlType.equalsIgnoreCase("FLOAT")||sqlType.equalsIgnoreCase("double"))
-			javaType = "double";
+			javaType = "Double";
 		else if(sqlType.equalsIgnoreCase("binary")||sqlType.equalsIgnoreCase("varbinary")||sqlType.equalsIgnoreCase("longvarbinary"))
 			javaType = "byte[]";
-		else if(sqlType.equalsIgnoreCase("date"))
+		else if(sqlType.equalsIgnoreCase("datetime")||sqlType.equalsIgnoreCase("date"))
 			javaType = "Date";
 		else if(sqlType.equalsIgnoreCase("time"))
 			javaType = "Time";
-		else if(sqlType.equalsIgnoreCase("datetime")||sqlType.equalsIgnoreCase("timestamp"))
+		else if(sqlType.equalsIgnoreCase("timestamp"))
 			javaType = "Timestamp";
 		else if(sqlType.equalsIgnoreCase("longblob"))
 			javaType = "byte[]";

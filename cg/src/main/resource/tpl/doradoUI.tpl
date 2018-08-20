@@ -1,4 +1,4 @@
-package #(package);
+package #(table.packageNameBase);
 
 import java.util.Collection;
 
@@ -9,11 +9,11 @@ import com.bstek.dorado.annotation.DataResolver;
 import com.bstek.dorado.annotation.Expose;
 
 @Component
-public class #(uiName) extends
-		BaseUI<#(entityName), #(serviceName> {
+public class #(capitalFirstChar(hump(table.tableName)))UI extends
+		BaseUI<#(capitalFirstChar(hump(table.tableName))), #(capitalFirstChar(hump(table.tableName)))Service> {
 
 	@DataProvider
-	public Collection<#(entityName)> find(Map<String, Object> parameter) {
+	public Collection<#(capitalFirstChar(hump(table.tableName)))> find(Map<String, Object> parameter) {
 		return this.baseService.find(parameter);
 	}
 
@@ -25,7 +25,7 @@ public class #(uiName) extends
 
 	@Transactional(rollbackFor = Exception.class)
 	@DataResolver
-	public void save(Collection<#(entityName)> datas)
+	public void save(Collection<#(capitalFirstChar(hump(table.tableName)))> datas)
 			throws Exception {
 		this.baseService.save(datas);
 	}
