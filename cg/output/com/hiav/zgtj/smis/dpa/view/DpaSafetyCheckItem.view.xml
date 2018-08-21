@@ -7,10 +7,10 @@
     <DataSet id="dsMain">
       <Property name="dataProvider">dpaSafetyCheckItemUI#find</Property>
       <Property name="dataType">[DpaSafetyCheckItem]</Property>
-      <Property name="pageSize">10</Property>
+      <Property name="pageSize">20</Property>
     </DataSet>
     <UpdateAction id="actSaveMain">
-      <Property name="dataResolver">dpaSafetyCheckItemUI#saveMain</Property>
+      <Property name="dataResolver">dpaSafetyCheckItemUI#save</Property>
       <UpdateItem>
         <Property name="dataSet">dsMain</Property>
         <Property name="dataPath">!DIRTY_TREE</Property>
@@ -50,25 +50,26 @@
     </Container>
     <Dialog id="dlgMain">
       <Property name="center">true</Property>
-      <Property name="width">500</Property>
-      <Property name="height">280</Property>
+      <Property name="width">100%</Property>
+      <Property name="height">100%</Property>
       <Property name="modal">true</Property>
       <Property name="caption">详细信息</Property>
+      <Property name="closeable">false</Property>
       <Buttons>
         <Button id="btnSaveMain">
           <Property name="caption">保存</Property>
           <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
         </Button>
         <Button id="btnCancelMain">
-          <Property name="caption">取消</Property>
-          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+          <Property name="caption">关闭</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -220px -240px</Property>
         </Button>
       </Buttons>
       <Children>
         <AutoForm id="afMain">
           <Property name="dataSet">dsMain</Property>
-          <Property name="cols">*</Property>
-          <Property name="labelWidth">80</Property>
+           <Property name="cols">*,*,*,*</Property>
+              <Property name="labelWidth">100</Property>
           <Property name="labelSeparator">：</Property>
           <Property name="labelAlign">right</Property>
         </AutoForm>

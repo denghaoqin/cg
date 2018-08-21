@@ -30,9 +30,6 @@ public class DpaSafetyMgmtWorkResource implements Serializable {
 		@Column(name = "SOURCE_TYPE")
     	private String sourceType;
     	
-		@Column(name = "CHECK_ITEM_ID")
-    	private String checkItemId;
-    	
 		@Column(name = "COMPRESSED_URL")
     	private String compressedUrl;
     	
@@ -90,14 +87,6 @@ public class DpaSafetyMgmtWorkResource implements Serializable {
 		
 		public String getSourceType(){
 			return this.sourceType;
-		}
-	
-		public void setCheckItemId(String checkItemId){
-			this.checkItemId = checkItemId;
-		}
-		
-		public String getCheckItemId(){
-			return this.checkItemId;
 		}
 	
 		public void setCompressedUrl(String compressedUrl){

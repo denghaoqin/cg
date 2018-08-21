@@ -24,8 +24,8 @@ public class DpaFieldSafety implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "SOURCE")
-    	private String source;
+		@Column(name = "SOURCE_TYPE")
+    	private String sourceType;
     	
 		@Column(name = "SOURCE_ID")
     	private String sourceId;
@@ -88,12 +88,12 @@ public class DpaFieldSafety implements Serializable {
 			return this.id;
 		}
 	
-		public void setSource(String source){
-			this.source = source;
+		public void setSourceType(String sourceType){
+			this.sourceType = sourceType;
 		}
 		
-		public String getSource(){
-			return this.source;
+		public String getSourceType(){
+			return this.sourceType;
 		}
 	
 		public void setSourceId(String sourceId){

@@ -24,8 +24,14 @@ public class DpaSafetyMgmtWork implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
+		@Column(name = "DAILY_PLAN_ID")
+    	private String dailyPlanId;
+    	
 		@Column(name = "SAFETY_DISCLOSURE_ID")
     	private String safetyDisclosureId;
+    	
+		@Column(name = "SAFETY_CHECK_ID")
+    	private String safetyCheckId;
     	
 		@Column(name = "WORK_START_TIME")
     	private Date workStartTime;
@@ -61,12 +67,28 @@ public class DpaSafetyMgmtWork implements Serializable {
 			return this.id;
 		}
 	
+		public void setDailyPlanId(String dailyPlanId){
+			this.dailyPlanId = dailyPlanId;
+		}
+		
+		public String getDailyPlanId(){
+			return this.dailyPlanId;
+		}
+	
 		public void setSafetyDisclosureId(String safetyDisclosureId){
 			this.safetyDisclosureId = safetyDisclosureId;
 		}
 		
 		public String getSafetyDisclosureId(){
 			return this.safetyDisclosureId;
+		}
+	
+		public void setSafetyCheckId(String safetyCheckId){
+			this.safetyCheckId = safetyCheckId;
+		}
+		
+		public String getSafetyCheckId(){
+			return this.safetyCheckId;
 		}
 	
 		public void setWorkStartTime(Date workStartTime){
