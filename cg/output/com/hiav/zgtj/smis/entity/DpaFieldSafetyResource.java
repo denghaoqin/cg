@@ -24,11 +24,11 @@ public class DpaFieldSafetyResource implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "SOURCE_ID")
-    	private String sourceId;
-    	
 		@Column(name = "SOURCE_TYPE")
     	private String sourceType;
+    	
+		@Column(name = "SOURCE_ID")
+    	private String sourceId;
     	
 		@Column(name = "COMPRESSED_URL")
     	private String compressedUrl;
@@ -73,20 +73,20 @@ public class DpaFieldSafetyResource implements Serializable {
 			return this.id;
 		}
 	
-		public void setSourceId(String sourceId){
-			this.sourceId = sourceId;
-		}
-		
-		public String getSourceId(){
-			return this.sourceId;
-		}
-	
 		public void setSourceType(String sourceType){
 			this.sourceType = sourceType;
 		}
 		
 		public String getSourceType(){
 			return this.sourceType;
+		}
+	
+		public void setSourceId(String sourceId){
+			this.sourceId = sourceId;
+		}
+		
+		public String getSourceId(){
+			return this.sourceId;
 		}
 	
 		public void setCompressedUrl(String compressedUrl){

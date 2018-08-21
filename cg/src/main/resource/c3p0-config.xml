@@ -4,8 +4,8 @@
        <default-config>
              <!-- 配置JDBC 四个基本属性 -->
              <property name ="driverClass" >com.mysql.jdbc.Driver</property >
-             <property name ="jdbcUrl" >jdbc:mysql://39.104.85.227:3306/zgtj?useOldAliasMetadataBehavior=true&amp;characterEncoding=utf-8</property >
-             <property name ="user" >zgtj</property>
-             <property name ="password" >zgtj2018</property>
+             <property name ="jdbcUrl" >jdbc:mysql://localhost:3306/smis?useOldAliasMetadataBehavior=true&amp;characterEncoding=utf-8</property >
+             <property name ="user" >root</property>
+             <property name ="password" >root</property>
        </default-config> <!-- This app is massive! -->
 </c3p0-config>

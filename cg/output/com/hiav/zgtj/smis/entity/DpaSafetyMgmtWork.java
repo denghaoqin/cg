@@ -11,12 +11,12 @@ import java.util.Date;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The persistent class for the dpa_field_safety database table.
+ * The persistent class for the dpa_safety_mgmt_work database table.
  * 
  */
 @Entity
-@Table(name = "dpa_field_safety")
-public class DpaFieldSafety implements Serializable {
+@Table(name = "dpa_safety_mgmt_work")
+public class DpaSafetyMgmtWork implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		@Id
@@ -24,41 +24,14 @@ public class DpaFieldSafety implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "SOURCE")
-    	private String source;
-    	
-		@Column(name = "SOURCE_ID")
-    	private String sourceId;
-    	
-		@Column(name = "PROJECT_ID")
-    	private String projectId;
-    	
-		@Column(name = "MAJOR_NAME")
-    	private String majorName;
-    	
-		@Column(name = "WORKING_CONTENTS")
-    	private String workingContents;
-    	
-		@Column(name = "WORKERS")
-    	private Integer workers;
+		@Column(name = "SAFETY_DISCLOSURE_ID")
+    	private String safetyDisclosureId;
     	
 		@Column(name = "WORK_START_TIME")
     	private Date workStartTime;
     	
 		@Column(name = "WORK_END_TIME")
     	private Date workEndTime;
-    	
-		@Column(name = "WORKING_LOCATION")
-    	private String workingLocation;
-    	
-		@Column(name = "STATUS")
-    	private String status;
-    	
-		@Column(name = "WF_STATUS")
-    	private String wfStatus;
-    	
-		@Column(name = "WF_OPINION")
-    	private String wfOpinion;
     	
 		@Column(name = "REMARK")
     	private String remark;
@@ -88,52 +61,12 @@ public class DpaFieldSafety implements Serializable {
 			return this.id;
 		}
 	
-		public void setSource(String source){
-			this.source = source;
+		public void setSafetyDisclosureId(String safetyDisclosureId){
+			this.safetyDisclosureId = safetyDisclosureId;
 		}
 		
-		public String getSource(){
-			return this.source;
-		}
-	
-		public void setSourceId(String sourceId){
-			this.sourceId = sourceId;
-		}
-		
-		public String getSourceId(){
-			return this.sourceId;
-		}
-	
-		public void setProjectId(String projectId){
-			this.projectId = projectId;
-		}
-		
-		public String getProjectId(){
-			return this.projectId;
-		}
-	
-		public void setMajorName(String majorName){
-			this.majorName = majorName;
-		}
-		
-		public String getMajorName(){
-			return this.majorName;
-		}
-	
-		public void setWorkingContents(String workingContents){
-			this.workingContents = workingContents;
-		}
-		
-		public String getWorkingContents(){
-			return this.workingContents;
-		}
-	
-		public void setWorkers(Integer workers){
-			this.workers = workers;
-		}
-		
-		public Integer getWorkers(){
-			return this.workers;
+		public String getSafetyDisclosureId(){
+			return this.safetyDisclosureId;
 		}
 	
 		public void setWorkStartTime(Date workStartTime){
@@ -150,38 +83,6 @@ public class DpaFieldSafety implements Serializable {
 		
 		public Date getWorkEndTime(){
 			return this.workEndTime;
-		}
-	
-		public void setWorkingLocation(String workingLocation){
-			this.workingLocation = workingLocation;
-		}
-		
-		public String getWorkingLocation(){
-			return this.workingLocation;
-		}
-	
-		public void setStatus(String status){
-			this.status = status;
-		}
-		
-		public String getStatus(){
-			return this.status;
-		}
-	
-		public void setWfStatus(String wfStatus){
-			this.wfStatus = wfStatus;
-		}
-		
-		public String getWfStatus(){
-			return this.wfStatus;
-		}
-	
-		public void setWfOpinion(String wfOpinion){
-			this.wfOpinion = wfOpinion;
-		}
-		
-		public String getWfOpinion(){
-			return this.wfOpinion;
 		}
 	
 		public void setRemark(String remark){

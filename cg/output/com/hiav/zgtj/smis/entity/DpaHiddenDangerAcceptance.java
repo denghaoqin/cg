@@ -19,10 +19,11 @@ import org.hibernate.annotations.GenericGenerator;
 public class DpaHiddenDangerAcceptance implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+		@Id
+		@GenericGenerator(name = "system-uuid", strategy = "uuid")
+		@GeneratedValue(generator = "system-uuid")
+		private String id;
 	
-		@Column(name = "ID")
-    	private String id;
-    	
 		@Column(name = "HIDDEN_DANGER_ID")
     	private String hiddenDangerId;
     	

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import java.util.Date;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,15 +19,37 @@ import org.hibernate.annotations.GenericGenerator;
 public class DpaSafetyCheckItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+		@Id
+		@GenericGenerator(name = "system-uuid", strategy = "uuid")
+		@GeneratedValue(generator = "system-uuid")
+		private String id;
 	
-		@Column(name = "ID")
-    	private String id;
+		@Column(name = "SAFETY_CHECK_ID")
+    	private String safetyCheckId;
     	
-		@Column(name = "CHECK_ID")
-    	private String checkId;
+		@Column(name = "REVIEW_CONTENT")
+    	private String reviewContent;
     	
-		@Column(name = "NAME")
-    	private String name;
+		@Column(name = "INSPECTOR")
+    	private String inspector;
+    	
+		@Column(name = "REQUIRED_START_CHECK_TIME")
+    	private Date requiredStartCheckTime;
+    	
+		@Column(name = "REQUIRED_END_CHECK_TIME")
+    	private Date requiredEndCheckTime;
+    	
+		@Column(name = "ACTUAL_CHECK_TIME")
+    	private Date actualCheckTime;
+    	
+		@Column(name = "NEED_RESOURCE")
+    	private String needResource;
+    	
+		@Column(name = "IS_APPROVED")
+    	private String isApproved;
+    	
+		@Column(name = "REMARK")
+    	private String remark;
     	
 	
 	
@@ -38,20 +61,76 @@ public class DpaSafetyCheckItem implements Serializable {
 			return this.id;
 		}
 	
-		public void setCheckId(String checkId){
-			this.checkId = checkId;
+		public void setSafetyCheckId(String safetyCheckId){
+			this.safetyCheckId = safetyCheckId;
 		}
 		
-		public String getCheckId(){
-			return this.checkId;
+		public String getSafetyCheckId(){
+			return this.safetyCheckId;
 		}
 	
-		public void setName(String name){
-			this.name = name;
+		public void setReviewContent(String reviewContent){
+			this.reviewContent = reviewContent;
 		}
 		
-		public String getName(){
-			return this.name;
+		public String getReviewContent(){
+			return this.reviewContent;
+		}
+	
+		public void setInspector(String inspector){
+			this.inspector = inspector;
+		}
+		
+		public String getInspector(){
+			return this.inspector;
+		}
+	
+		public void setRequiredStartCheckTime(Date requiredStartCheckTime){
+			this.requiredStartCheckTime = requiredStartCheckTime;
+		}
+		
+		public Date getRequiredStartCheckTime(){
+			return this.requiredStartCheckTime;
+		}
+	
+		public void setRequiredEndCheckTime(Date requiredEndCheckTime){
+			this.requiredEndCheckTime = requiredEndCheckTime;
+		}
+		
+		public Date getRequiredEndCheckTime(){
+			return this.requiredEndCheckTime;
+		}
+	
+		public void setActualCheckTime(Date actualCheckTime){
+			this.actualCheckTime = actualCheckTime;
+		}
+		
+		public Date getActualCheckTime(){
+			return this.actualCheckTime;
+		}
+	
+		public void setNeedResource(String needResource){
+			this.needResource = needResource;
+		}
+		
+		public String getNeedResource(){
+			return this.needResource;
+		}
+	
+		public void setIsApproved(String isApproved){
+			this.isApproved = isApproved;
+		}
+		
+		public String getIsApproved(){
+			return this.isApproved;
+		}
+	
+		public void setRemark(String remark){
+			this.remark = remark;
+		}
+		
+		public String getRemark(){
+			return this.remark;
 		}
 	
 	

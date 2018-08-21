@@ -11,12 +11,12 @@ import java.util.Date;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The persistent class for the dpa_safety_check_resource database table.
+ * The persistent class for the dpa_ppe database table.
  * 
  */
 @Entity
-@Table(name = "dpa_safety_check_resource")
-public class DpaSafetyCheckResource implements Serializable {
+@Table(name = "dpa_ppe")
+public class DpaPpe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		@Id
@@ -24,32 +24,17 @@ public class DpaSafetyCheckResource implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "SOURCE_TYPE")
-    	private String sourceType;
-    	
-		@Column(name = "SOURCE_ID")
-    	private String sourceId;
-    	
-		@Column(name = "COMPRESSED_URL")
-    	private String compressedUrl;
-    	
-		@Column(name = "URL")
-    	private String url;
-    	
 		@Column(name = "NAME")
     	private String name;
     	
-		@Column(name = "FILE_FORMAT")
-    	private String fileFormat;
-    	
-		@Column(name = "FILE_SIZE")
-    	private Integer fileSize;
-    	
-		@Column(name = "REMARK")
-    	private String remark;
+		@Column(name = "UOM")
+    	private String uom;
     	
 		@Column(name = "DELETED")
     	private Boolean deleted;
+    	
+		@Column(name = "REMARK")
+    	private String remark;
     	
 		@Column(name = "CREATED_BY")
     	private String createdBy;
@@ -73,38 +58,6 @@ public class DpaSafetyCheckResource implements Serializable {
 			return this.id;
 		}
 	
-		public void setSourceType(String sourceType){
-			this.sourceType = sourceType;
-		}
-		
-		public String getSourceType(){
-			return this.sourceType;
-		}
-	
-		public void setSourceId(String sourceId){
-			this.sourceId = sourceId;
-		}
-		
-		public String getSourceId(){
-			return this.sourceId;
-		}
-	
-		public void setCompressedUrl(String compressedUrl){
-			this.compressedUrl = compressedUrl;
-		}
-		
-		public String getCompressedUrl(){
-			return this.compressedUrl;
-		}
-	
-		public void setUrl(String url){
-			this.url = url;
-		}
-		
-		public String getUrl(){
-			return this.url;
-		}
-	
 		public void setName(String name){
 			this.name = name;
 		}
@@ -113,28 +66,12 @@ public class DpaSafetyCheckResource implements Serializable {
 			return this.name;
 		}
 	
-		public void setFileFormat(String fileFormat){
-			this.fileFormat = fileFormat;
+		public void setUom(String uom){
+			this.uom = uom;
 		}
 		
-		public String getFileFormat(){
-			return this.fileFormat;
-		}
-	
-		public void setFileSize(Integer fileSize){
-			this.fileSize = fileSize;
-		}
-		
-		public Integer getFileSize(){
-			return this.fileSize;
-		}
-	
-		public void setRemark(String remark){
-			this.remark = remark;
-		}
-		
-		public String getRemark(){
-			return this.remark;
+		public String getUom(){
+			return this.uom;
 		}
 	
 		public void setDeleted(Boolean deleted){
@@ -143,6 +80,14 @@ public class DpaSafetyCheckResource implements Serializable {
 		
 		public Boolean getDeleted(){
 			return this.deleted;
+		}
+	
+		public void setRemark(String remark){
+			this.remark = remark;
+		}
+		
+		public String getRemark(){
+			return this.remark;
 		}
 	
 		public void setCreatedBy(String createdBy){

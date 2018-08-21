@@ -11,12 +11,12 @@ import java.util.Date;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The persistent class for the dpa_safety_check_resource database table.
+ * The persistent class for the dpa_hidden_library_measure database table.
  * 
  */
 @Entity
-@Table(name = "dpa_safety_check_resource")
-public class DpaSafetyCheckResource implements Serializable {
+@Table(name = "dpa_hidden_library_measure")
+public class DpaHiddenLibraryMeasure implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		@Id
@@ -24,26 +24,11 @@ public class DpaSafetyCheckResource implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "SOURCE_TYPE")
-    	private String sourceType;
+		@Column(name = "HIDDEN_LIBRARY_ID")
+    	private String hiddenLibraryId;
     	
-		@Column(name = "SOURCE_ID")
-    	private String sourceId;
-    	
-		@Column(name = "COMPRESSED_URL")
-    	private String compressedUrl;
-    	
-		@Column(name = "URL")
-    	private String url;
-    	
-		@Column(name = "NAME")
-    	private String name;
-    	
-		@Column(name = "FILE_FORMAT")
-    	private String fileFormat;
-    	
-		@Column(name = "FILE_SIZE")
-    	private Integer fileSize;
+		@Column(name = "CONTENT")
+    	private String content;
     	
 		@Column(name = "REMARK")
     	private String remark;
@@ -73,60 +58,20 @@ public class DpaSafetyCheckResource implements Serializable {
 			return this.id;
 		}
 	
-		public void setSourceType(String sourceType){
-			this.sourceType = sourceType;
+		public void setHiddenLibraryId(String hiddenLibraryId){
+			this.hiddenLibraryId = hiddenLibraryId;
 		}
 		
-		public String getSourceType(){
-			return this.sourceType;
+		public String getHiddenLibraryId(){
+			return this.hiddenLibraryId;
 		}
 	
-		public void setSourceId(String sourceId){
-			this.sourceId = sourceId;
+		public void setContent(String content){
+			this.content = content;
 		}
 		
-		public String getSourceId(){
-			return this.sourceId;
-		}
-	
-		public void setCompressedUrl(String compressedUrl){
-			this.compressedUrl = compressedUrl;
-		}
-		
-		public String getCompressedUrl(){
-			return this.compressedUrl;
-		}
-	
-		public void setUrl(String url){
-			this.url = url;
-		}
-		
-		public String getUrl(){
-			return this.url;
-		}
-	
-		public void setName(String name){
-			this.name = name;
-		}
-		
-		public String getName(){
-			return this.name;
-		}
-	
-		public void setFileFormat(String fileFormat){
-			this.fileFormat = fileFormat;
-		}
-		
-		public String getFileFormat(){
-			return this.fileFormat;
-		}
-	
-		public void setFileSize(Integer fileSize){
-			this.fileSize = fileSize;
-		}
-		
-		public Integer getFileSize(){
-			return this.fileSize;
+		public String getContent(){
+			return this.content;
 		}
 	
 		public void setRemark(String remark){

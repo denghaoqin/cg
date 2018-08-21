@@ -27,6 +27,9 @@ public class DpaHiddenDanger implements Serializable {
 		@Column(name = "PROJECT_ID")
     	private String projectId;
     	
+		@Column(name = "SOURCE_TYPE")
+    	private String sourceType;
+    	
 		@Column(name = "SOURCE_ID")
     	private String sourceId;
     	
@@ -94,6 +97,14 @@ public class DpaHiddenDanger implements Serializable {
 		
 		public String getProjectId(){
 			return this.projectId;
+		}
+	
+		public void setSourceType(String sourceType){
+			this.sourceType = sourceType;
+		}
+		
+		public String getSourceType(){
+			return this.sourceType;
 		}
 	
 		public void setSourceId(String sourceId){

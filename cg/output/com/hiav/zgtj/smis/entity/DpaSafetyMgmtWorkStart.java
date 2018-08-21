@@ -11,12 +11,12 @@ import java.util.Date;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The persistent class for the dpa_safety_check_resource database table.
+ * The persistent class for the dpa_safety_mgmt_work_start database table.
  * 
  */
 @Entity
-@Table(name = "dpa_safety_check_resource")
-public class DpaSafetyCheckResource implements Serializable {
+@Table(name = "dpa_safety_mgmt_work_start")
+public class DpaSafetyMgmtWorkStart implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		@Id
@@ -24,26 +24,14 @@ public class DpaSafetyCheckResource implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "SOURCE_TYPE")
-    	private String sourceType;
+		@Column(name = "MGMT_WORK_ID")
+    	private String mgmtWorkId;
     	
-		@Column(name = "SOURCE_ID")
-    	private String sourceId;
+		@Column(name = "THE_TIME")
+    	private Date theTime;
     	
-		@Column(name = "COMPRESSED_URL")
-    	private String compressedUrl;
-    	
-		@Column(name = "URL")
-    	private String url;
-    	
-		@Column(name = "NAME")
-    	private String name;
-    	
-		@Column(name = "FILE_FORMAT")
-    	private String fileFormat;
-    	
-		@Column(name = "FILE_SIZE")
-    	private Integer fileSize;
+		@Column(name = "THE_SITE")
+    	private String theSite;
     	
 		@Column(name = "REMARK")
     	private String remark;
@@ -73,60 +61,28 @@ public class DpaSafetyCheckResource implements Serializable {
 			return this.id;
 		}
 	
-		public void setSourceType(String sourceType){
-			this.sourceType = sourceType;
+		public void setMgmtWorkId(String mgmtWorkId){
+			this.mgmtWorkId = mgmtWorkId;
 		}
 		
-		public String getSourceType(){
-			return this.sourceType;
+		public String getMgmtWorkId(){
+			return this.mgmtWorkId;
 		}
 	
-		public void setSourceId(String sourceId){
-			this.sourceId = sourceId;
+		public void setTheTime(Date theTime){
+			this.theTime = theTime;
 		}
 		
-		public String getSourceId(){
-			return this.sourceId;
+		public Date getTheTime(){
+			return this.theTime;
 		}
 	
-		public void setCompressedUrl(String compressedUrl){
-			this.compressedUrl = compressedUrl;
+		public void setTheSite(String theSite){
+			this.theSite = theSite;
 		}
 		
-		public String getCompressedUrl(){
-			return this.compressedUrl;
-		}
-	
-		public void setUrl(String url){
-			this.url = url;
-		}
-		
-		public String getUrl(){
-			return this.url;
-		}
-	
-		public void setName(String name){
-			this.name = name;
-		}
-		
-		public String getName(){
-			return this.name;
-		}
-	
-		public void setFileFormat(String fileFormat){
-			this.fileFormat = fileFormat;
-		}
-		
-		public String getFileFormat(){
-			return this.fileFormat;
-		}
-	
-		public void setFileSize(Integer fileSize){
-			this.fileSize = fileSize;
-		}
-		
-		public Integer getFileSize(){
-			return this.fileSize;
+		public String getTheSite(){
+			return this.theSite;
 		}
 	
 		public void setRemark(String remark){

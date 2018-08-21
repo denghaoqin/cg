@@ -11,12 +11,12 @@ import java.util.Date;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The persistent class for the dpa_safety_check_resource database table.
+ * The persistent class for the dpa_safety_mgmt_work_resource database table.
  * 
  */
 @Entity
-@Table(name = "dpa_safety_check_resource")
-public class DpaSafetyCheckResource implements Serializable {
+@Table(name = "dpa_safety_mgmt_work_resource")
+public class DpaSafetyMgmtWorkResource implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		@Id
@@ -24,11 +24,14 @@ public class DpaSafetyCheckResource implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
+		@Column(name = "SOURCE_ID")
+    	private String sourceId;
+    	
 		@Column(name = "SOURCE_TYPE")
     	private String sourceType;
     	
-		@Column(name = "SOURCE_ID")
-    	private String sourceId;
+		@Column(name = "CHECK_ITEM_ID")
+    	private String checkItemId;
     	
 		@Column(name = "COMPRESSED_URL")
     	private String compressedUrl;
@@ -73,6 +76,14 @@ public class DpaSafetyCheckResource implements Serializable {
 			return this.id;
 		}
 	
+		public void setSourceId(String sourceId){
+			this.sourceId = sourceId;
+		}
+		
+		public String getSourceId(){
+			return this.sourceId;
+		}
+	
 		public void setSourceType(String sourceType){
 			this.sourceType = sourceType;
 		}
@@ -81,12 +92,12 @@ public class DpaSafetyCheckResource implements Serializable {
 			return this.sourceType;
 		}
 	
-		public void setSourceId(String sourceId){
-			this.sourceId = sourceId;
+		public void setCheckItemId(String checkItemId){
+			this.checkItemId = checkItemId;
 		}
 		
-		public String getSourceId(){
-			return this.sourceId;
+		public String getCheckItemId(){
+			return this.checkItemId;
 		}
 	
 		public void setCompressedUrl(String compressedUrl){

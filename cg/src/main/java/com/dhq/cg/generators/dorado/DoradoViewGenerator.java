@@ -24,7 +24,7 @@ public class DoradoViewGenerator extends SimpleDatabaseGenerator{
 		.append(packageNameBase.replaceAll("\\.", "/"))
 		.append(File.separator)
 		.append(StringUtils.capitalFirstChar(StringUtils.hump(tableName)))
-		.append(".view")
+		.append(".view.xml")
 		;
 		return filePath.toString();
 	}

@@ -24,14 +24,26 @@ public class DpaDailyPlanResource implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "SOUCRE")
-    	private String soucre;
+		@Column(name = "SOURCE_TYPE")
+    	private String sourceType;
     	
 		@Column(name = "SOURCE_ID")
     	private String sourceId;
     	
-		@Column(name = "CONTENT")
-    	private String content;
+		@Column(name = "COMPRESSED_URL")
+    	private String compressedUrl;
+    	
+		@Column(name = "URL")
+    	private String url;
+    	
+		@Column(name = "NAME")
+    	private String name;
+    	
+		@Column(name = "FILE_FORMAT")
+    	private String fileFormat;
+    	
+		@Column(name = "FILE_SIZE")
+    	private Integer fileSize;
     	
 		@Column(name = "REMARK")
     	private String remark;
@@ -61,12 +73,12 @@ public class DpaDailyPlanResource implements Serializable {
 			return this.id;
 		}
 	
-		public void setSoucre(String soucre){
-			this.soucre = soucre;
+		public void setSourceType(String sourceType){
+			this.sourceType = sourceType;
 		}
 		
-		public String getSoucre(){
-			return this.soucre;
+		public String getSourceType(){
+			return this.sourceType;
 		}
 	
 		public void setSourceId(String sourceId){
@@ -77,12 +89,44 @@ public class DpaDailyPlanResource implements Serializable {
 			return this.sourceId;
 		}
 	
-		public void setContent(String content){
-			this.content = content;
+		public void setCompressedUrl(String compressedUrl){
+			this.compressedUrl = compressedUrl;
 		}
 		
-		public String getContent(){
-			return this.content;
+		public String getCompressedUrl(){
+			return this.compressedUrl;
+		}
+	
+		public void setUrl(String url){
+			this.url = url;
+		}
+		
+		public String getUrl(){
+			return this.url;
+		}
+	
+		public void setName(String name){
+			this.name = name;
+		}
+		
+		public String getName(){
+			return this.name;
+		}
+	
+		public void setFileFormat(String fileFormat){
+			this.fileFormat = fileFormat;
+		}
+		
+		public String getFileFormat(){
+			return this.fileFormat;
+		}
+	
+		public void setFileSize(Integer fileSize){
+			this.fileSize = fileSize;
+		}
+		
+		public Integer getFileSize(){
+			return this.fileSize;
 		}
 	
 		public void setRemark(String remark){

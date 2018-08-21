@@ -11,12 +11,12 @@ import java.util.Date;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * The persistent class for the dpa_safety_check database table.
+ * The persistent class for the dpa_safety_disclosure_measure database table.
  * 
  */
 @Entity
-@Table(name = "dpa_safety_check")
-public class DpaSafetyCheck implements Serializable {
+@Table(name = "dpa_safety_disclosure_measure")
+public class DpaSafetyDisclosureMeasure implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		@Id
@@ -24,26 +24,14 @@ public class DpaSafetyCheck implements Serializable {
 		@GeneratedValue(generator = "system-uuid")
 		private String id;
 	
-		@Column(name = "DAILY_PLAN_ID")
-    	private String dailyPlanId;
+		@Column(name = "SAFETY_DISCLOSURE_ID")
+    	private String safetyDisclosureId;
     	
-		@Column(name = "INSPECTION_PURPOSE")
-    	private String inspectionPurpose;
-    	
-		@Column(name = "INSPECTION_REQUIRED")
-    	private String inspectionRequired;
-    	
-		@Column(name = "WORKING_CONTENTS")
-    	private String workingContents;
-    	
-		@Column(name = "STATUS")
-    	private String status;
+		@Column(name = "CONTENT")
+    	private String content;
     	
 		@Column(name = "REMARK")
     	private String remark;
-    	
-		@Column(name = "DELETED")
-    	private Boolean deleted;
     	
 		@Column(name = "CREATED_BY")
     	private String createdBy;
@@ -67,44 +55,20 @@ public class DpaSafetyCheck implements Serializable {
 			return this.id;
 		}
 	
-		public void setDailyPlanId(String dailyPlanId){
-			this.dailyPlanId = dailyPlanId;
+		public void setSafetyDisclosureId(String safetyDisclosureId){
+			this.safetyDisclosureId = safetyDisclosureId;
 		}
 		
-		public String getDailyPlanId(){
-			return this.dailyPlanId;
+		public String getSafetyDisclosureId(){
+			return this.safetyDisclosureId;
 		}
 	
-		public void setInspectionPurpose(String inspectionPurpose){
-			this.inspectionPurpose = inspectionPurpose;
+		public void setContent(String content){
+			this.content = content;
 		}
 		
-		public String getInspectionPurpose(){
-			return this.inspectionPurpose;
-		}
-	
-		public void setInspectionRequired(String inspectionRequired){
-			this.inspectionRequired = inspectionRequired;
-		}
-		
-		public String getInspectionRequired(){
-			return this.inspectionRequired;
-		}
-	
-		public void setWorkingContents(String workingContents){
-			this.workingContents = workingContents;
-		}
-		
-		public String getWorkingContents(){
-			return this.workingContents;
-		}
-	
-		public void setStatus(String status){
-			this.status = status;
-		}
-		
-		public String getStatus(){
-			return this.status;
+		public String getContent(){
+			return this.content;
 		}
 	
 		public void setRemark(String remark){
@@ -113,14 +77,6 @@ public class DpaSafetyCheck implements Serializable {
 		
 		public String getRemark(){
 			return this.remark;
-		}
-	
-		public void setDeleted(Boolean deleted){
-			this.deleted = deleted;
-		}
-		
-		public Boolean getDeleted(){
-			return this.deleted;
 		}
 	
 		public void setCreatedBy(String createdBy){

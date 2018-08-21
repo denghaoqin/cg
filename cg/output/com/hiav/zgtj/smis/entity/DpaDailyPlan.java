@@ -84,11 +84,11 @@ public class DpaDailyPlan implements Serializable {
 		@Column(name = "WF_OPINION")
     	private String wfOpinion;
     	
-		@Column(name = "REMARK")
-    	private String remark;
-    	
 		@Column(name = "DELETED")
     	private Boolean deleted;
+    	
+		@Column(name = "REMARK")
+    	private String remark;
     	
 		@Column(name = "CREATED_BY")
     	private String createdBy;
@@ -272,20 +272,20 @@ public class DpaDailyPlan implements Serializable {
 			return this.wfOpinion;
 		}
 	
-		public void setRemark(String remark){
-			this.remark = remark;
-		}
-		
-		public String getRemark(){
-			return this.remark;
-		}
-	
 		public void setDeleted(Boolean deleted){
 			this.deleted = deleted;
 		}
 		
 		public Boolean getDeleted(){
 			return this.deleted;
+		}
+	
+		public void setRemark(String remark){
+			this.remark = remark;
+		}
+		
+		public String getRemark(){
+			return this.remark;
 		}
 	
 		public void setCreatedBy(String createdBy){
