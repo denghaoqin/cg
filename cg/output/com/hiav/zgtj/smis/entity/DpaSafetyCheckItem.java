@@ -48,6 +48,9 @@ public class DpaSafetyCheckItem implements Serializable {
 		@Column(name = "IS_APPROVED")
     	private String isApproved;
     	
+		@Column(name = "STATUS")
+    	private String status;
+    	
 		@Column(name = "REMARK")
     	private String remark;
     	
@@ -138,6 +141,14 @@ public class DpaSafetyCheckItem implements Serializable {
 		
 		public String getIsApproved(){
 			return this.isApproved;
+		}
+	
+		public void setStatus(String status){
+			this.status = status;
+		}
+		
+		public String getStatus(){
+			return this.status;
 		}
 	
 		public void setRemark(String remark){

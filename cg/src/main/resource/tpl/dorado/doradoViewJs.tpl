@@ -53,7 +53,6 @@ var dsMain = view.get("#dsMain");
 			});
 	} else {
 		dorado.MessageBox.alert("没有需要保存的数据");
-		view.id("dlgMain").hide();
 	}
 };
 
