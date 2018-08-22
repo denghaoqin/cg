@@ -37,7 +37,7 @@ public class DpaSafetyDisclosure implements Serializable {
     	private String safetyGoal;
     	
 		@Column(name = "ATTENTION")
-    	private Date attention;
+    	private String attention;
     	
 		@Column(name = "STATUS")
     	private String status;
@@ -102,11 +102,11 @@ public class DpaSafetyDisclosure implements Serializable {
 			return this.safetyGoal;
 		}
 	
-		public void setAttention(Date attention){
+		public void setAttention(String attention){
 			this.attention = attention;
 		}
 		
-		public Date getAttention(){
+		public String getAttention(){
 			return this.attention;
 		}
 	
