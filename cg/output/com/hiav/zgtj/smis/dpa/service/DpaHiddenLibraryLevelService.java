@@ -72,7 +72,8 @@ public class DpaHiddenLibraryLevelService extends BaseService<DpaHiddenLibraryLe
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Collection<DpaHiddenLibraryLevel> find(Map<String, Object> params) {
+	public Collection<DpaHiddenLibraryLevel> find(Map<String, Object> params,
+			Criteria filterCriteria) {
 
 
 		StringBuilder sql = new StringBuilder(" select e.* FROM dpa_hidden_library_level e ")
@@ -110,7 +111,7 @@ public class DpaHiddenLibraryLevelService extends BaseService<DpaHiddenLibraryLe
 		*/
 		sql.append(" ORDER BY e.creation_date desc ");
 
-		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(null)
+		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(filterCriteria)
 				.findAll();
 	}
 	

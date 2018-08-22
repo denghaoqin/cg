@@ -13,8 +13,9 @@ public class DpaHiddenDangerUI extends
 		BaseUI<DpaHiddenDanger, DpaHiddenDangerService> {
 
 	@DataProvider
-	public Collection<DpaHiddenDanger> find(Map<String, Object> parameter) {
-		return this.baseService.find(parameter);
+	public Collection<DpaHiddenDanger> find(Map<String, Object> parameter,
+			Criteria filterCriteria) {
+		return this.baseService.find(parameter,filterCriteria);
 	}
 
 	@Transactional(rollbackFor = Exception.class)

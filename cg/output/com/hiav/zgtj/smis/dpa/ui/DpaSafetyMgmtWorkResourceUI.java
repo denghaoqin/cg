@@ -13,8 +13,9 @@ public class DpaSafetyMgmtWorkResourceUI extends
 		BaseUI<DpaSafetyMgmtWorkResource, DpaSafetyMgmtWorkResourceService> {
 
 	@DataProvider
-	public Collection<DpaSafetyMgmtWorkResource> find(Map<String, Object> parameter) {
-		return this.baseService.find(parameter);
+	public Collection<DpaSafetyMgmtWorkResource> find(Map<String, Object> parameter,
+			Criteria filterCriteria) {
+		return this.baseService.find(parameter,filterCriteria);
 	}
 
 	@Transactional(rollbackFor = Exception.class)

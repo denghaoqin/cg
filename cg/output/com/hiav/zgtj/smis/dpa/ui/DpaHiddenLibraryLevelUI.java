@@ -13,8 +13,9 @@ public class DpaHiddenLibraryLevelUI extends
 		BaseUI<DpaHiddenLibraryLevel, DpaHiddenLibraryLevelService> {
 
 	@DataProvider
-	public Collection<DpaHiddenLibraryLevel> find(Map<String, Object> parameter) {
-		return this.baseService.find(parameter);
+	public Collection<DpaHiddenLibraryLevel> find(Map<String, Object> parameter,
+			Criteria filterCriteria) {
+		return this.baseService.find(parameter,filterCriteria);
 	}
 
 	@Transactional(rollbackFor = Exception.class)

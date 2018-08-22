@@ -72,7 +72,8 @@ public class DpaSafetyCheckResourceService extends BaseService<DpaSafetyCheckRes
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Collection<DpaSafetyCheckResource> find(Map<String, Object> params) {
+	public Collection<DpaSafetyCheckResource> find(Map<String, Object> params,
+			Criteria filterCriteria) {
 
 
 		StringBuilder sql = new StringBuilder(" select e.* FROM dpa_safety_check_resource e ")
@@ -110,7 +111,7 @@ public class DpaSafetyCheckResourceService extends BaseService<DpaSafetyCheckRes
 		*/
 		sql.append(" ORDER BY e.creation_date desc ");
 
-		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(null)
+		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(filterCriteria)
 				.findAll();
 	}
 	

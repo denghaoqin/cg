@@ -72,7 +72,8 @@ public class DpaSafetyMgmtWorkResourceService extends BaseService<DpaSafetyMgmtW
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Collection<DpaSafetyMgmtWorkResource> find(Map<String, Object> params) {
+	public Collection<DpaSafetyMgmtWorkResource> find(Map<String, Object> params,
+			Criteria filterCriteria) {
 
 
 		StringBuilder sql = new StringBuilder(" select e.* FROM dpa_safety_mgmt_work_resource e ")
@@ -110,7 +111,7 @@ public class DpaSafetyMgmtWorkResourceService extends BaseService<DpaSafetyMgmtW
 		*/
 		sql.append(" ORDER BY e.creation_date desc ");
 
-		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(null)
+		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(filterCriteria)
 				.findAll();
 	}
 	

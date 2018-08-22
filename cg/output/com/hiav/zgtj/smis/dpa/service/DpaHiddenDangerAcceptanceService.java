@@ -72,7 +72,8 @@ public class DpaHiddenDangerAcceptanceService extends BaseService<DpaHiddenDange
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Collection<DpaHiddenDangerAcceptance> find(Map<String, Object> params) {
+	public Collection<DpaHiddenDangerAcceptance> find(Map<String, Object> params,
+			Criteria filterCriteria) {
 
 
 		StringBuilder sql = new StringBuilder(" select e.* FROM dpa_hidden_danger_acceptance e ")
@@ -110,7 +111,7 @@ public class DpaHiddenDangerAcceptanceService extends BaseService<DpaHiddenDange
 		*/
 		sql.append(" ORDER BY e.creation_date desc ");
 
-		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(null)
+		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(filterCriteria)
 				.findAll();
 	}
 	

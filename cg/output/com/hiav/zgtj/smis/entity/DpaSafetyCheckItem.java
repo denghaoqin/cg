@@ -51,6 +51,21 @@ public class DpaSafetyCheckItem implements Serializable {
 		@Column(name = "REMARK")
     	private String remark;
     	
+		@Column(name = "DELETED")
+    	private Boolean deleted;
+    	
+		@Column(name = "CREATED_BY")
+    	private String createdBy;
+    	
+		@Column(name = "CREATION_DATE")
+    	private Date creationDate;
+    	
+		@Column(name = "LAST_UPDATE_BY")
+    	private String lastUpdateBy;
+    	
+		@Column(name = "LAST_UPDATE_DATE")
+    	private Date lastUpdateDate;
+    	
 	
 	
 		public void setId(String id){
@@ -131,6 +146,46 @@ public class DpaSafetyCheckItem implements Serializable {
 		
 		public String getRemark(){
 			return this.remark;
+		}
+	
+		public void setDeleted(Boolean deleted){
+			this.deleted = deleted;
+		}
+		
+		public Boolean getDeleted(){
+			return this.deleted;
+		}
+	
+		public void setCreatedBy(String createdBy){
+			this.createdBy = createdBy;
+		}
+		
+		public String getCreatedBy(){
+			return this.createdBy;
+		}
+	
+		public void setCreationDate(Date creationDate){
+			this.creationDate = creationDate;
+		}
+		
+		public Date getCreationDate(){
+			return this.creationDate;
+		}
+	
+		public void setLastUpdateBy(String lastUpdateBy){
+			this.lastUpdateBy = lastUpdateBy;
+		}
+		
+		public String getLastUpdateBy(){
+			return this.lastUpdateBy;
+		}
+	
+		public void setLastUpdateDate(Date lastUpdateDate){
+			this.lastUpdateDate = lastUpdateDate;
+		}
+		
+		public Date getLastUpdateDate(){
+			return this.lastUpdateDate;
 		}
 	
 	

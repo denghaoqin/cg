@@ -13,8 +13,9 @@ public class #(capitalFirstChar(hump(table.tableName)))UI extends
 		BaseUI<#(capitalFirstChar(hump(table.tableName))), #(capitalFirstChar(hump(table.tableName)))Service> {
 
 	@DataProvider
-	public Collection<#(capitalFirstChar(hump(table.tableName)))> find(Map<String, Object> parameter) {
-		return this.baseService.find(parameter);
+	public Collection<#(capitalFirstChar(hump(table.tableName)))> find(Map<String, Object> parameter,
+			Criteria filterCriteria) {
+		return this.baseService.find(parameter,filterCriteria);
 	}
 
 	@Transactional(rollbackFor = Exception.class)

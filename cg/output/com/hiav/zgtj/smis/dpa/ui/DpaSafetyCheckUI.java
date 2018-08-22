@@ -13,8 +13,9 @@ public class DpaSafetyCheckUI extends
 		BaseUI<DpaSafetyCheck, DpaSafetyCheckService> {
 
 	@DataProvider
-	public Collection<DpaSafetyCheck> find(Map<String, Object> parameter) {
-		return this.baseService.find(parameter);
+	public Collection<DpaSafetyCheck> find(Map<String, Object> parameter,
+			Criteria filterCriteria) {
+		return this.baseService.find(parameter,filterCriteria);
 	}
 
 	@Transactional(rollbackFor = Exception.class)

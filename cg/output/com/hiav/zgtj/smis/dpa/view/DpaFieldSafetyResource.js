@@ -68,3 +68,10 @@ var dsMain = view.get("#dsMain");
 		view.id("dlgMain").hide();
 	}
 };
+
+//@Bind #dlgMain.onClose
+!function(self, arg) {
+	if (view.get("#actSaveMain").get("hasUpdateData")) {
+		dsMain.getData("#").cancel();
+	} 
+};

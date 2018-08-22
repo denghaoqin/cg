@@ -72,7 +72,8 @@ public class DpaDailyPlanService extends BaseService<DpaDailyPlan> {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Collection<DpaDailyPlan> find(Map<String, Object> params) {
+	public Collection<DpaDailyPlan> find(Map<String, Object> params,
+			Criteria filterCriteria) {
 
 
 		StringBuilder sql = new StringBuilder(" select e.* FROM dpa_daily_plan e ")
@@ -110,7 +111,7 @@ public class DpaDailyPlanService extends BaseService<DpaDailyPlan> {
 		*/
 		sql.append(" ORDER BY e.creation_date desc ");
 
-		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(null)
+		return new SqlFinder(sql.toString(), p, e).setFilterCriteria(filterCriteria)
 				.findAll();
 	}
 	

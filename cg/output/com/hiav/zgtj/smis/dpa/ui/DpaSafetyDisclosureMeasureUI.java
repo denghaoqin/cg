@@ -13,8 +13,9 @@ public class DpaSafetyDisclosureMeasureUI extends
 		BaseUI<DpaSafetyDisclosureMeasure, DpaSafetyDisclosureMeasureService> {
 
 	@DataProvider
-	public Collection<DpaSafetyDisclosureMeasure> find(Map<String, Object> parameter) {
-		return this.baseService.find(parameter);
+	public Collection<DpaSafetyDisclosureMeasure> find(Map<String, Object> parameter,
+			Criteria filterCriteria) {
+		return this.baseService.find(parameter,filterCriteria);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
