@@ -117,7 +117,7 @@ public class DataBaseAnalyzer {
 			sqlType = sqlType.substring(0, index);
 		}
 		
-		if(sqlType.equalsIgnoreCase("VARCHAR")||sqlType.equalsIgnoreCase("CHAR")||sqlType.contains("TEXT"))
+		if(sqlType.equalsIgnoreCase("VARCHAR")||sqlType.equalsIgnoreCase("CHAR")||sqlType.toUpperCase().contains("TEXT"))
 			javaType = "String";
 		else if(sqlType.equalsIgnoreCase("NUMERIC")||sqlType.equalsIgnoreCase("DECIMAL"))
 			javaType = "BigDecimal";

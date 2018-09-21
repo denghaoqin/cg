@@ -19,14 +19,12 @@ public class App
 {
     public static void main( String[] args ) throws Exception
     {
-    	HibernateEntityGenerator hg = new HibernateEntityGenerator("dorado/hibernateEntity.tpl","output", "com.hiav.zgtj.smis.entity");
-    	DoradoServiceGenerator dsg = new DoradoServiceGenerator("dorado/doradoService.tpl","output", "com.hiav.zgtj.smis.dpa.service");
-    	DoradoUIGenerator dug = new DoradoUIGenerator("dorado/doradoUI.tpl","output", "com.hiav.zgtj.smis.dpa.ui");
-    	DoradoViewGenerator dvg = new DoradoViewGenerator("dorado/doradoView.tpl","output", "com.hiav.zgtj.smis.dpa.view");
-    	DoradoViewJsGenerator dvjg = new DoradoViewJsGenerator("dorado/doradoViewJs.tpl","output", "com.hiav.zgtj.smis.dpa.view");
-    	//List<String> tables = new ArrayList<String>();
-    	//tables.add("dpa_daily_plan");
-    	List<Table> allTables = DataBaseAnalyzer.getAllTables(JDBCUtils.getConnection(),"^dpa.*$");
+    	HibernateEntityGenerator hg = new HibernateEntityGenerator("dorado/hibernateEntity.tpl","output", "com.aster.crm.entity");
+    	DoradoServiceGenerator dsg = new DoradoServiceGenerator("dorado/doradoService.tpl","output", "com.aster.crm.ship.service");
+    	DoradoUIGenerator dug = new DoradoUIGenerator("dorado/doradoUI.tpl","output", "com.aster.crm.ship.ui");
+    	DoradoViewGenerator dvg = new DoradoViewGenerator("dorado/doradoView1.tpl","output", "com.aster.crm.ship.view");
+    	DoradoViewJsGenerator dvjg = new DoradoViewJsGenerator("dorado/doradoViewJs.tpl","output", "com.aster.crm.ship.view");
+    	List<Table> allTables = DataBaseAnalyzer.getAllTables(JDBCUtils.getConnection(),"^ship.*$");
 		hg.setTables(allTables);
 		dsg.setTables(allTables);
 		dug.setTables(allTables);
